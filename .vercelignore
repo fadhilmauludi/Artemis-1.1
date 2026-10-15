@@ -1,0 +1,6 @@
+services
+docker-compose.yml
+Dockerfile
+.github
+node_modules
+dist
