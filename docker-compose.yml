@@ -1,0 +1,20 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    environment:
+      - VITE_DONATION_DISCOVERY_URL=http://localhost:8000
+    depends_on:
+      - discovery-service
+
+  discovery-service:
+    build:
+      context: ./services/donation-discovery
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - BING_SEARCH_API_KEY=${BING_SEARCH_API_KEY:-}
